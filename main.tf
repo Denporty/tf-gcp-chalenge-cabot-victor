@@ -1,9 +1,4 @@
 terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-    }
-  }
   backend "gcs" {
     bucket  = "tf-gcp-chalenge-cabot-victor-storage"
     prefix  = "terraform/state"
@@ -16,6 +11,10 @@ module "cloud" {
 
 module "storage" {
   source = "./modules/storage"
+}
+
+module "big-query" {
+  source = "./modules/big-query"
 }
 
 provider "google" {
